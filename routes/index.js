@@ -33,27 +33,32 @@ app.put("/api/workouts/:id", (req, res) => {
     });
   });
   
-app.post("/submit", ({ body }, res) => {
-    const book = body;
+app.post("/api/workouts", ({ body }, res) => {
   
-    book.read = false;
-  
-    db.books.save(book, (error, saved) => {
+    db.create(body, (error, saved) => {
       if (error) {
         console.log(error);
       } else {
+        console.log('POST ROUTE: ', saved)
         res.send(saved);
       }
     });
   });
   
   
-  app.get("/unread", (req, res) => {
-    db.books.find({ read: false }, (error, found) => {
-      if (error) {
-        console.log(error);
-      } else {
-        res.json(found);
-      }
-    });
+  app.get("/api/workouts/range", (req, res) => {
+    db.find().limit(15).
+    then(records => {
+        console.log("Range",records)
+        res.json(records)
+    }).catch(err=>{
+        res.json(err)
+    })
+    // , (error, found) => {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     res.json(found);
+    //   }
+    // });
   });
