@@ -8,8 +8,8 @@
 
 // option of continue 
 const app = require('express').Router();
-const db = require('../models'); 
-
+const db = require('../../models'); 
+// route that displays the last workout with the option of continue or new workout 
 app.get("/api/workouts", (req, res) => {
     db.find({}, (error, found) => {
       if (error) {
@@ -21,7 +21,7 @@ app.get("/api/workouts", (req, res) => {
     });
   });
 
-// new:true => needed to update the aray
+// new:true => needed to update the array
 app.put("/api/workouts/:id", (req, res) => {
     db.findByIdAndUpdate(req.params.id,{$push:{exercises:req.body}},{new:true}, (error, found) => {
       if (error) {
@@ -62,3 +62,6 @@ app.post("/api/workouts", ({ body }, res) => {
     //   }
     // });
   });
+
+  // exported router 
+  module.exports = app; 
