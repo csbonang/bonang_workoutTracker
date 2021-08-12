@@ -34,12 +34,14 @@ const app = express();
 
 // app.use(logger("dev"));
 // routes
-app.use(require("./routes/api/index.js"));
-app.use(require("./routes/html/index.js"));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
+// we must have this after so that we can reference the css and js files 
+app.use(require("./routes/api/index.js"));
+app.use(require("./routes/html/index.js"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { useNewUrlParser: true });
 
