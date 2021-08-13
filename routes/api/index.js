@@ -1,12 +1,3 @@
-//TODO:: 
-// GET  "/:id"
-   // display LAST WORKOUT W/OPTION OF CONTINUE OR NEW WORKOUT 
-// option of new workout 
-// POST "/exercise/:id" 
-    // add an exercise type 
-    // exercise form 
-
-// option of continue 
 const app = require('express').Router();
 const db = require('../../models'); 
 // route that displays the last workout with the option of continue or new workout 
@@ -21,9 +12,13 @@ app.get("/api/workouts", (req, res) => {
     });
   });
 
-  // using aggregate 
-  // todo: DO THE SAME FOR THE OTHER GET ROUTES 
-  // aggregate:: uses 1 addField to find the total duration
+// Please note, the code below is not being used. 
+// Although I placed aggregate here as an alternative. 
+// Currently in workout.js (line 13), the spread operator is being
+// used. Meaning, it takes whatever has been updated. No matter how many new workouts, 
+// it simply accepts all its contents without throwing any non-respective parameters. 
+// Hence, aggregate is not needed but if we removed the total duration in workout.js to tally
+// the total duration, we can do the following below and update the api route.
 app.get("/temp/api", (req, res) => {
     db.aggregate([{
       $addFields: {
@@ -64,8 +59,7 @@ app.post("/api/workouts", ({ body }, res) => {
     });
   });
   
-  
-  app.get("/api/workouts/range", (req, res) => {
+app.get("/api/workouts/range", (req, res) => {
     db.aggregate([{
       $addFields: {
         totalDuration: { $sum: "$exercises.duration" }
