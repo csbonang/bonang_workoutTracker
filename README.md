@@ -33,7 +33,7 @@ To launch heroku, run the following command:
 `heroku open`
 
 ## Deployed 
-[Deployed Link](https://nameless-ridge-57552.herokuapp.com/)
+[Deployed Link](https://nameless-ridge-57552.herokuapp.com/) <br>
 <b> Home 
 ![Home](images/home.PNG)
 Dashboard
