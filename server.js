@@ -43,8 +43,19 @@ app.use(express.static("public"));
 app.use(require("./routes/api/index.js"));
 app.use(require("./routes/html/index.js"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { useNewUrlParser: true });
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/custommethoddb", { useNewUrlParser: true });
 
 app.listen(PORT, () => {
   console.log("App running on port 3000!");
 });
+
+
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost/workout',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    }
+  );
