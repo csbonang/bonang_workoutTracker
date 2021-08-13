@@ -34,7 +34,15 @@ To launch heroku, run the following command:
 
 ## Deployed 
 [Deployed Link](https://nameless-ridge-57552.herokuapp.com/)
-
+<b> Home 
+![Home](images/home.PNG)
+Dashboard
+![Dasboard](images/dashboard.PNG)
+Exercise Type: Resistance 
+![Resistance](images/resistance.PNG)
+Exercise Type: Cardio
+![Cardio](images/cardio.PNG)
+</b> 
 ## License 
 [MIT License](https://opensource.org/licenses/MIT)
 
